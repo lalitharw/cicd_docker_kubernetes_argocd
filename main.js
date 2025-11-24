@@ -38,7 +38,7 @@ app.post("/save-data",
 })
 
 app.get("/",async(req,res) => {
-    res.send("Hello asd")
+    res.send("Hello world")
     try{
         await sequelize.authenticate()
         console.log("Connection has been established successfully")
