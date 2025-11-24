@@ -1,0 +1,22 @@
+name: docker-ci
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish_images:
+    runs-on: ubuntu:latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build Docker Images
+        run: |
+          docker build . -t lalitharwate/cicd_docker_kubernetes_argocd:latest
+      
+      - name: push image to docker hub
+        run: |
+          docker login -u lalitharwate -p ${{ secrets.DOCKER_HUB_TOKEN }}
+          docker push lalitharwate/cicd_docker_kubernetes_argocd:latest
