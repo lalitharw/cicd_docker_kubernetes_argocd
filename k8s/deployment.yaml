@@ -19,6 +19,13 @@ spec:
           image: lalitharwate/cicd_docker_kubernetes_argocd:latest
           ports:
             - containerPort: 9000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
 
 ---
 
