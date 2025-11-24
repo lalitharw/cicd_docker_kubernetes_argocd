@@ -17,3 +17,12 @@ jobs:
         with:
           username: ${{ vars.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
+      
+      - name: Build and Push Docker Images
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{vars.DOCKER_HUB_USERNAME}}/cicd_docker_kubernetes_argocd:latest
+            ${{vars.DOCKER_HUB_USERNAME}}/cicd_docker_kubernetes_argocd:${{github.sha}}
